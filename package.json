@@ -1,0 +1,22 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozan-tr/SANDBOX.git"
+  },
+  "author": "ozan-tr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ozan-tr/SANDBOX/issues"
+  },
+  "homepage": "https://github.com/ozan-tr/SANDBOX#readme",
+  "dependencies": {
+    "electron": "^28.1.0"
+  }
+}
