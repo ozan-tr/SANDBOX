@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANDBOX</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="gameInfoContainer">
+            <div class="gameInfo">
+                <div class="gameInfoTitle">FPS:</div>
+                <div class="gameInfoValue" id="fps">0</div>
+            </div>
+        </div>
+        <div class="gameContainer">
+            <div class="gameCanvasContainer">
+                <canvas id="gameCanvas" width="500" height="400"></canvas>
+            </div>
+            <div class="elementsContainer">
+                <div class="categorySelector">
+                    <div class="categoryItem" onclick="openCategory(this.innerHTML)">Basic</div>
+                </div>
+                <div class="categoryContentContainer">
+                    <div class="categoryContent activeCategory" id="basic">
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Sand</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Water</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Mercury</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Fire</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Stone</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Wood</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Steam</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="src/js/elements.js"></script>
+<script src="src/js/main.js"></script>
+
+</html>
