@@ -1,4 +1,4 @@
-
+var tempView = false;
 
 class Game {
     constructor() {
@@ -29,7 +29,7 @@ class Game {
         return this.tiles[y][x];
     }
     setTile(x, y, tile) {
-        if(!this.tiles[y][x].replacable) return;
+
         this.tiles[y][x] = eval(`new ${tile}()`);
     }
     swapTiles(x1, y1, x2, y2) {
@@ -47,8 +47,46 @@ class Game {
 
 }
 
+const mapNum = (num, in_min, in_max, out_min, out_max) => {
+    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+const hsvToRgb = (h, s, v) => {
+    var r, g, b;
+    var i;
+    var f, p, q, t;
+
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = v * (1 - s);
+    q = v * (1 - f * s);
+    t = v * (1 - (1 - f) * s);
+
+    switch(i % 6){
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+    }
+
+    return {
+        r: Math.round(r * 255),
+        g: Math.round(g * 255),
+        b: Math.round(b * 255)
+    }
+}
+
+function lerp(a, b, n) {
+    return (1 - n) * a + n * b;
+}
+
 
 const fpsCounter = document.querySelector('#fps');
+const mx = document.querySelector('#mx');
+const my = document.querySelector('#my');
+const mt = document.querySelector('#mt');
 var lastTimestamp = 0;
 const canvas = document.querySelector('#gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -58,6 +96,8 @@ var selectedTile = 'Sand';
 const tileSize = 10;
 
 const gravity = 9.8;
+
+const airDensity = 1.293;;
 
 const game = new Game();
 
@@ -75,6 +115,8 @@ gameCanvas.addEventListener('mousemove', (e) => {
     if(!mouse.onCanvas) return;
     mouse.x = Math.floor(e.offsetX / tileSize);
     mouse.y = Math.floor(e.offsetY / tileSize);
+    mx.textContent = mouse.x;
+    my.textContent = mouse.y;
 });
 
 gameCanvas.addEventListener('mousedown', (e) => {
@@ -112,6 +154,8 @@ function update(timestamp) {
 
 
     if(mouse.onCanvas){
+        mt.textContent = game.getTile(mouse.x, mouse.y).temperature.toFixed(2);
+
         const cursor = getCursor();
         cursor.forEach((pos) => {
             ctx.fillStyle = 'rgba(255,255,255,.1)';

@@ -13,6 +13,20 @@
                 <div class="gameInfoTitle">FPS:</div>
                 <div class="gameInfoValue" id="fps">0</div>
             </div>
+            <div class="gameInfo">
+                <div class="gameInfoTitle">ViewMode:</div>
+                <div class="gameInfoValue" onclick="tempView=false">Normal</div>
+                <div class="gameInfoValue" onclick="tempView=true">Temp</div>
+            </div>
+            <div class="gameInfo">
+                <div class="gameInfoTitle">x:</div>
+                <div class="gameInfoValue" id="mx"></div>
+                <div class="gameInfoTitle">y:</div>
+                <div class="gameInfoValue" id="my"></div>
+                <div class="gameInfoTitle">t:</div>
+                <div class="gameInfoValue" id="mt"></div>
+
+            </div>
         </div>
         <div class="gameContainer">
             <div class="gameCanvasContainer">
@@ -25,12 +39,15 @@
                 <div class="categoryContentContainer">
                     <div class="categoryContent activeCategory" id="basic">
                         <div class="elementItem" onclick="setElement(this.innerHTML)">Sand</div>
-                        <div class="elementItem" onclick="setElement(this.innerHTML)">Water</div>
                         <div class="elementItem" onclick="setElement(this.innerHTML)">Mercury</div>
-                        <div class="elementItem" onclick="setElement(this.innerHTML)">Fire</div>
-                        <div class="elementItem" onclick="setElement(this.innerHTML)">Stone</div>
-                        <div class="elementItem" onclick="setElement(this.innerHTML)">Wood</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Dirt</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Water</div>
                         <div class="elementItem" onclick="setElement(this.innerHTML)">Steam</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Ice</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Wood</div>
+                        <div class="elementItem" onclick="setElement(this.innerHTML)">Stone</div>
+
+
                     </div>
                 </div>
             </div>
